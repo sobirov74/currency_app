@@ -1,6 +1,5 @@
 import { ChangeEvent, FC, HTMLInputTypeAttribute, useRef } from "react";
 import cl from "classnames";
-import { UseFormRegisterReturn } from "react-hook-form";
 import styles from "./index.module.scss";
 
 export enum InputStyle {
@@ -16,7 +15,6 @@ interface Props {
   placeholder?: string | null;
   autoFocus?: boolean;
   disabled?: boolean;
-  register?: UseFormRegisterReturn;
   onFocus?: () => void;
   ref?: any;
   inputStyle?: InputStyle;
@@ -26,7 +24,6 @@ interface Props {
 const MainInput: FC<Props> = ({
   className,
   placeholder = "",
-  register,
   ref,
   inputStyle = InputStyle.white,
   defaultValue,
@@ -43,7 +40,6 @@ const MainInput: FC<Props> = ({
       placeholder={placeholder || ""}
       defaultValue={defaultValue}
       ref={ref}
-      {...register}
       {...others}
     />
   );

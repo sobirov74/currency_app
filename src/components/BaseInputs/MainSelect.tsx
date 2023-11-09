@@ -1,7 +1,6 @@
 import { ChangeEvent, FC, ReactNode, useRef } from "react";
 import cl from "classnames";
 import styles from "./index.module.scss";
-import { UseFormRegisterReturn } from "react-hook-form";
 import { InputStyle } from "./MainInput";
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
   className?: string;
   value?: string | number;
   disabled?: boolean;
-  register?: UseFormRegisterReturn;
   values?: { name: string; status?: number }[];
   children?: ReactNode;
   onFocus?: () => void;
@@ -20,7 +18,6 @@ interface Props {
 
 const MainSelect: FC<Props> = ({
   className,
-  register,
   values,
   children,
   onFocus,
@@ -43,7 +40,6 @@ const MainSelect: FC<Props> = ({
       )}
       onFocus={onFocus}
       {...others}
-      {...register}
     >
       {!children ? (
         <>

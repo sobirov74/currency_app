@@ -4,7 +4,6 @@ import axios, {
   AxiosRequestConfig,
   CancelTokenSource,
 } from "axios";
-import { Store } from "redux";
 
 interface BaseUrlParams {
   url: string;

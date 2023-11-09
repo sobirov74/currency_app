@@ -1,5 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { ChangeEvent, useState } from "react";
 import BaseInput from "src/components/BaseInputs";
 import MainInput from "src/components/BaseInputs/MainInput";
 import MainSelect from "src/components/BaseInputs/MainSelect";
@@ -7,13 +6,10 @@ import Button from "src/components/Button";
 import Loading from "src/components/Loader";
 import Typography, { TextSize, Weight } from "src/components/Typography";
 import useConvert from "src/hooks/useConvert";
-import useCurrencies from "src/hooks/useCurrencies";
 import { CurrValues } from "src/utils/helpers";
 import { CurrenciesEnum } from "src/utils/types";
 
 const Converter = () => {
-  const { register, getValues, handleSubmit, watch } = useForm();
-
   const [from, setFrom] = useState<CurrenciesEnum>(CurrenciesEnum.USD);
   const [to, setTo] = useState<CurrenciesEnum>(CurrenciesEnum.EUR);
   const [amount, setAmount] = useState<number>(1);
@@ -36,7 +32,7 @@ const Converter = () => {
     refetch();
   };
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="">
+    <form className="">
       <div className="flex gap-3 items-end py-6 px-4">
         <BaseInput label="From" className="flex flex-1 flex-col">
           <MainSelect
@@ -62,7 +58,10 @@ const Converter = () => {
             type="number"
           />
         </BaseInput>
-        <Button type="submit" className="bg-green mb-2 text-white flex flex-1">
+        <Button
+          onClick={onSubmit}
+          className="bg-green mb-2 text-white flex flex-1"
+        >
           Convert
         </Button>
       </div>
